@@ -25,6 +25,17 @@
 
     </head>
     <body>
+
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li style="margin:10px 0">{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
       <div class="container">
           <div class="row">
               <div class="col-md-12">
@@ -73,7 +84,7 @@
                                 </div>
                                 <div class="form-row">
                                     <label>
-                                        <select name="cat">
+                                        <select name="group_id">
                                             <option>Choose categories list</option>
                                             @foreach($groups as $group)
                                                 <option value="{{$group->id}}">{{$group->name}}</option>
