@@ -14,7 +14,7 @@
 Route::get('/', 'TaskController@showTask');
 Route::post('/addtask', 'TaskController@newTask');
 
-Route::get('/delete/{id}', 'Controller@deleteTask');
-Route::get('/pending/{id}', 'Controller@pendingTask');
-Route::get('/done/{id}', 'Controller@doneTask');
-Route::get('/group/{id}', 'TaskController@filterGroupTask');
+Route::get('/delete/{id}', 'TaskController@deleteTask');
+Route::get('/pending/{id}', 'TaskController@pendingTask');
+Route::get('/done/{id}',    'TaskController@doneTask');
+Route::get('/group/{id}',  'TaskController@filterGroupTask');
