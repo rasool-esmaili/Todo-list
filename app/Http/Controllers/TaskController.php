@@ -27,14 +27,6 @@ class TaskController
         $task->state = $request->state ;
         $task->group_id = $request->group_id;
 
-    public function newTask(Request $request)
-    {
-//        dd($r->done);
-        $task= new Task();
-        $task->title = $request->title ;
-        $task->state = $request->state ;
-        $task->group_id = 1;
-
         $task->deadline= $request->deadline;
         $task->save();
         $request->session()->flash('status', 'Task successfully added!');
@@ -46,5 +38,26 @@ class TaskController
         $groups= Group::all();
         return view('welcome',compact('tasks','groups'));
     }
+    public function deleteTask($id)
+    {
 
+        $t=Task::find($id);
+        $t->delete();
+        return redirect("/");
+    }
+    public function pendingTask($id)
+    {
+        $t=Task::find($id);
+        $t->state='pending';
+        $t->save();
+        return redirect("/");
+    }
+    public function doneTask($id)
+    {
+        $t=Task::find($id);
+        $t->state='Done';
+        $t->save();
+
+        return redirect("/");
+    }
 }
