@@ -11,16 +11,16 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="css\bootstrap.css">
-        <link rel="stylesheet" href="css\me.css">
-        <link rel="stylesheet" href="css\bootstrap-datetimepicker.css">
+        <link rel="stylesheet" href="{{URL::to('css\bootstrap.css')}}" >
+        <link rel="stylesheet" href="{{URL::to('css\me.css')}}">
+        <link rel="stylesheet" href="{{URL::to('css\bootstrap-datetimepicker.css') }}">
 
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/moment.js"></script>
-        <script type="text/javascript" src="js/transition.js"></script>
-        <script type="text/javascript" src="js/collapse.js"></script>
-        <script type="text/javascript" src="js/bootstrap.js"></script>
-        <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+        <script type="text/javascript" src="{{URL::to('js/jquery.js')}}"></script>
+        <script type="text/javascript" src="{{URL::to('js/moment.js')}}"></script>
+        <script type="text/javascript" src="{{URL::to('js/transition.js')}}"></script>
+        <script type="text/javascript" src="{{URL::to('js/collapse.js')}}"></script>
+        <script type="text/javascript" src="{{URL::to('js/bootstrap.js')}}"></script>
+        <script type="text/javascript" src="{{URL::to('js/bootstrap-datetimepicker.min.js')}}"></script>
 
 
     </head>
@@ -38,7 +38,16 @@
 
       <div class="container">
           <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-2">
+                  <ul class="list-group">
+                      <li style="list-style:none"><a href="/" class="list-group-item active"  ><span class="glyphicon glyphicon-th-list "></span>All Group</a></li>
+                      @foreach($groups as $group)
+                          <li style="list-style:none"><a class="list-group-item" href="{{ URL::to('group/'.$group->id ) }}">{{$group->name}} </a></li>
+                      @endforeach
+                  </ul>
+
+              </div>
+              <div class="col-md-10">
                   <table class="table ">
                       <th>title task</th>
                       <th>status</th>

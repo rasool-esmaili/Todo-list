@@ -60,4 +60,10 @@ class TaskController
 
         return redirect("/");
     }
+    public function filterGroupTask($id)
+    {
+        $tasks= Task::all()->where('group_id','=',$id);
+        $groups= Group::all();
+        return view('welcome',compact('tasks','groups'));
+    }
 }
