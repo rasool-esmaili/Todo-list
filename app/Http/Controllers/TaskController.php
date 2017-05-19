@@ -25,8 +25,17 @@ class TaskController
         $task= new Task();
         $task->title = $request->title ;
         $task->state = $request->state ;
-        $task->group_id = $request->group_id;
-
+       if ($request->group_id == 0 ){
+           if($request->group==''){
+               dd('plz select group !!');
+           }
+           $group = new Group();
+           $group->name =$request->group;
+           $group->save();
+           $task->group_id = $group->id;
+       }else{
+           $task->group_id = $request->group_id;
+       }
         $task->deadline= $request->deadline;
         $task->save();
         $request->session()->flash('status', 'Task successfully added!');

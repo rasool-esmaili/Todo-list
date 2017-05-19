@@ -37,7 +37,7 @@ class StoreTask extends FormRequest
     {
         return [
             'title.required' => 'A title is required',
-            'group_id.numeric' => 'group must be numeric',
+            'group_id.numeric' => 'group is required',
         ];
     }
 

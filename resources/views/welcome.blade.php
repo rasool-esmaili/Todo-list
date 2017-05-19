@@ -37,10 +37,11 @@
     @endif
 
       <div class="container">
-          <div class="row">
+          <div class="row" style="margin-top: 50px">
               <div class="col-md-2">
                   <ul class="list-group">
-                      <li style="list-style:none"><a href="/" class="list-group-item active"  ><span class="glyphicon glyphicon-th-list "></span>All Group</a></li>
+                      <li style="list-style:none"><a  class="list-group-item active"  ><span class="glyphicon glyphicon-th-list "></span>  Groups </a></li>
+                      <li style="list-style:none"><a href="/" class="list-group-item "  >  All Group</a></li>
                       @foreach($groups as $group)
                           <li style="list-style:none"><a class="list-group-item" href="{{ URL::to('group/'.$group->id ) }}">{{$group->name}} </a></li>
                       @endforeach
@@ -94,12 +95,13 @@
                                 <div class="form-row">
                                     <label>
                                         <select name="group_id">
-                                            <option>Choose categories list</option>
+                                            <option value="0">Choose categories list</option>
                                             @foreach($groups as $group)
                                                 <option value="{{$group->id}}">{{$group->name}}</option>
                                             @endforeach
                                         </select>
                                     </label>
+                                    <input type="text" name="group" placeholder="if you want new group">
                                 </div>
 
                                 <div class="form-row">
@@ -123,7 +125,7 @@
                                     <div class="col-sm-12 col-md-12" >
                                         <div class="form-group form-group-lg ">
                                             <div class='input-group date' id='datetimepicker9'>
-                                                <input type='text' name="deadline" class="form-control"  />
+                                                <input type='text' name="deadline" class="form-control" placeholder="dead line here" />
                                                 <span class="input-group-addon">
                                                     <span class="glyphicon glyphicon-calendar">
                                                     </span>
